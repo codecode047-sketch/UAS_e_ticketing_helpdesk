@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import '../../../../core/services/auth_service.dart';
+
 enum AuthStatus { initial, loading, authenticated, unauthenticated, error }
 
 class AuthState {
@@ -33,6 +35,7 @@ class AuthState {
 
 class AuthNotifier extends StateNotifier<AuthState> {
   final FlutterSecureStorage _secureStorage;
+  final AuthService _authService = AuthService();
 
   AuthNotifier(this._secureStorage) : super(const AuthState());
 
@@ -52,6 +55,26 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   Future<bool> login(String username, String password) async {
     state = state.copyWith(status: AuthStatus.loading, errorMessage: null);
+
+    try {
+      final apiResult = await _authService.login(username, password);
+      if (apiResult['success'] == true) {
+        final role = apiResult['role'] as String? ?? 'user';
+        final token = apiResult['token'] as String? ?? 'api_token_123';
+
+        await _secureStorage.write(key: 'auth_token', value: token);
+        await _secureStorage.write(key: 'user_role', value: role);
+
+        state = AuthState(
+          status: AuthStatus.authenticated,
+          token: token,
+          role: role,
+        );
+        return true;
+      }
+    } catch (_) {
+      // API gagal, lanjut ke mock login
+    }
 
     await Future.delayed(const Duration(milliseconds: 800));
 

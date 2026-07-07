@@ -1,16 +1,111 @@
-# e_ticketing_helpdesk
+# E-Ticketing Helpdesk
 
-A new Flutter project.
+## Deskripsi
 
-## Getting Started
+E-Ticketing Helpdesk merupakan aplikasi Flutter untuk membantu proses pelaporan, pengelolaan, dan monitoring tiket bantuan (Helpdesk). Sistem ini menyediakan tiga jenis pengguna yaitu Admin, Helpdesk, dan User.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## Fitur
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Login Multi Role
+- Dashboard
+- Manajemen Tiket
+- Detail Tiket
+- Tracking Status Tiket
+- Komentar Tiket
+- Notifikasi
+- Profile User
+- Reset Password
+- Registrasi User
+- Statistik Tiket
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## Teknologi
+
+- Flutter
+- Riverpod
+- Dio
+- Flutter Secure Storage
+- REST API (PHP Native)
+- MySQL
+
+---
+
+## Cara Menjalankan
+
+```bash
+flutter pub get
+flutter run
+```
+
+---
+
+## Login Credentials
+
+### Admin
+
+Email
+
+```
+msury@gmail.com
+```
+
+Password
+
+```
+suryagantengdewe
+```
+
+---
+
+### Helpdesk
+
+Email
+
+```
+helpdesk@gmail.com
+```
+
+Password
+
+```
+suryagantengdewe
+```
+
+---
+
+### User
+
+Email
+
+```
+user@gmail.com
+```
+
+Password
+
+```
+suryagantengdewe
+```
+
+---
+
+## Build APK
+
+```bash
+flutter build apk --debug
+```
+
+Output
+
+```
+build/app/outputs/flutter-apk/app-debug.apk
+```
+
+---
+
+## Repository
+
+https://github.com/codecode047-sketch/UAS_e_ticketing_helpdesk
